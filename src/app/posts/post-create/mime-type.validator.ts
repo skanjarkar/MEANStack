@@ -4,6 +4,7 @@ import { Observable, Observer, of } from 'rxjs';
 export const mimeType = (
   control: AbstractControl
 ): Promise<{ [key: string]: any }> | Observable<{ [key: string]: any }> => {
+
   if (typeof(control.value) === 'string') {
     return of(null);
   }
@@ -13,7 +14,7 @@ export const mimeType = (
     (observer: Observer<{ [key: string]: any }>) => {
       fileReader.addEventListener('loadend', () => {
         const arr = new Uint8Array(fileReader.result as ArrayBuffer).subarray(0, 4);
-        let header = "";
+        let header = '';
         let isValid = false;
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < arr.length; i++) {

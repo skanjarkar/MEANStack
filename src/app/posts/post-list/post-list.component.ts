@@ -27,6 +27,7 @@ export class PostListComponent implements OnInit, OnDestroy {
       .subscribe((posts: Post[]) => {
         this.isLoading = false;
         this.posts = posts;
+        console.log(this.posts[0].imagePath);
       });
   }
 
